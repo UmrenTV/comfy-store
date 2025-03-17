@@ -1,4 +1,9 @@
 const App = () => {
-    return <h1 className="text-3xl font-bold underline">Hello World!</h1>;
+    return (
+        <div>
+            <h1 className="prose-2xl">Hello World!</h1>
+            <button className="btn btn-secondary">Click Me</button>
+        </div>
+    );
 };
 export default App;
