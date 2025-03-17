@@ -1,7 +1,8 @@
-import { useRouteError, Link } from "react-router-dom";
+import { useRouteError, Link, useNavigate } from "react-router-dom";
 
 const Error = () => {
     const error = useRouteError();
+    const navigate = useNavigate();
     console.log(error);
 
     if (error.status === 404) {
@@ -26,9 +27,18 @@ const Error = () => {
     }
     return (
         <main className="grid min-h-[100vh] place-items-center px-8">
-            <h4 className="text-center font-bold text-4xl">
-                There was an error...
-            </h4>
+            <div className="text-center flex flex-col gap-4">
+                <h4 className="text-center font-bold text-4xl">
+                    There was an error...
+                </h4>
+                <h4>{error.error.message}</h4>
+                <button
+                    onClick={() => navigate(-1)}
+                    className="btn btn-secondary w-[10rem] mx-auto"
+                >
+                    go back
+                </button>
+            </div>
         </main>
     );
 };

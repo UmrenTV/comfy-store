@@ -22,11 +22,11 @@ const Login = () => {
                     defaultValue="secret"
                 />
                 <div className="mt-4">
-                    <SubmitBtn text="login" />
+                    <SubmitBtn text="Login" />
                 </div>
 
                 <button type="button" className="btn btn-secondary btn-block">
-                    guest user
+                    Guest User
                 </button>
                 <p className="text-center">
                     Not a member yet?{" "}

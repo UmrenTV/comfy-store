@@ -13,15 +13,15 @@ const Register = () => {
                 <FormInput type="email" label="email" name="email" />
                 <FormInput type="password" label="password" name="password" />
                 <div className="mt-4">
-                    <SubmitBtn text="register" />
+                    <SubmitBtn text="Register" />
                 </div>
                 <p className="text-center">
-                    Already a member
+                    Already a member?
                     <Link
                         to="/login"
                         className="ml-2 link link-hover link-primary capitalize"
                     >
-                        login
+                        Login
                     </Link>
                 </p>
             </Form>
