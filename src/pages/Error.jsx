@@ -31,7 +31,12 @@ const Error = () => {
                 <h4 className="text-center font-bold text-4xl">
                     There was an error...
                 </h4>
-                <h4>{error.error.message}</h4>
+                <h4 className="text text-secondary">
+                    Status:
+                    <span className="text text-primary"> {error.status} </span>
+                    <span>{error.statusText || "no status"}</span>
+                </h4>
+                <h4>{error.error?.message || "check console"}</h4>
                 <button
                     onClick={() => navigate(-1)}
                     className="btn btn-secondary w-[10rem] mx-auto"
