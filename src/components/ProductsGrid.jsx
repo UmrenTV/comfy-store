@@ -1,7 +1,7 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { formatPrice } from "../utils";
 
-const FeaturedGrid = () => {
+const ProductsGrid = () => {
     const { products } = useLoaderData();
 
     return (
@@ -37,4 +37,4 @@ const FeaturedGrid = () => {
     );
 };
 
-export default FeaturedGrid;
+export default ProductsGrid;
