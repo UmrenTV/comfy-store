@@ -1,3 +1,4 @@
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import {
     HomeLayout,
     Landing,
@@ -11,7 +12,13 @@ import {
     Checkout,
     Orders,
 } from "./pages";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+
+import { ErrorElement } from "./components";
+
+// loaders
+import { loader as landingLoader } from "./pages/Landing";
+
+// actions
 
 const router = createBrowserRouter([
     {
@@ -22,6 +29,8 @@ const router = createBrowserRouter([
             {
                 index: true,
                 element: <Landing />,
+                errorElement: <ErrorElement />,
+                loader: landingLoader,
             },
             {
                 path: "about",
@@ -32,7 +41,7 @@ const router = createBrowserRouter([
                 element: <Products />,
             },
             {
-                path: "product/:id",
+                path: "products/:id",
                 element: <SingleProduct />,
             },
             {
@@ -62,13 +71,6 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
-    return (
-        <RouterProvider router={router}>
-            <div>
-                <h1 className="prose-2xl">Hello World!</h1>
-                <button className="btn btn-soft btn-secondary">Click Me</button>
-            </div>
-        </RouterProvider>
-    );
+    return <RouterProvider router={router} />;
 };
 export default App;
