@@ -1,5 +1,5 @@
 import { useLoaderData, Link } from "react-router-dom";
-import { customFetch, formatPrice } from "../utils";
+import { customFetch, formatPrice, generateAmountOptions } from "../utils";
 import { useState } from "react";
 
 export const loader = async ({ params }) => {
@@ -15,6 +15,11 @@ const SingleProduct = () => {
     const dollarsAmount = formatPrice(price);
 
     const [productColor, setProductColor] = useState(colors[0]);
+    const [amount, setAmount] = useState(1);
+    const handleAmount = (e) => {
+        setAmount(parseInt(e.target.value));
+    };
+
     return (
         <section>
             <div className="text-md breadcrumbs">
@@ -61,6 +66,31 @@ const SingleProduct = () => {
                                 );
                             })}
                         </div>
+                    </div>
+                    {/* AMOUNT */}
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label" htmlFor="amount">
+                            <h4 className="text-md font-medium tracking-wider capitalize">
+                                amount
+                            </h4>
+                        </label>
+                        <select
+                            className="select select-secondary select-bordered select-md"
+                            id="amount"
+                            value={amount}
+                            onChange={handleAmount}
+                        >
+                            {generateAmountOptions(10)}
+                        </select>
+                    </div>
+                    {/* CART BUTTON */}
+                    <div className="mt-10">
+                        <button
+                            className="btn btn-secondary btn-md"
+                            onClick={() => console.log("add to cart")}
+                        >
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
             </div>
