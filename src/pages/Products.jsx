@@ -13,7 +13,6 @@ export const loader = async ({ request }) => {
 
 const Products = () => {
     const { products, meta } = useLoaderData();
-    console.log(products, meta);
     return (
         <>
             <Filters />
