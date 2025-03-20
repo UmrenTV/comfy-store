@@ -41,7 +41,7 @@ export const action =
                 "Order placement error, please try again!";
             console.error(errorMessage);
             toast.error(errorMessage);
-            if (error.response.status === 401) {
+            if (error.response.status === (401 || 403)) {
                 return redirect("/login");
             }
             return null;
