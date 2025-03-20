@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { clearCart } from "../features/cart/cartSlice";
 
 export const action =
-    (store) =>
+    (store, queryClient) =>
     async ({ request }) => {
         const formData = await request.formData();
         const { name, address } = Object.fromEntries(formData);
@@ -32,6 +32,7 @@ export const action =
                     },
                 }
             );
+            queryClient.removeQueries("orders");
             store.dispatch(clearCart());
             toast.success("Order placed successfully!");
             return redirect("/");
@@ -41,7 +42,7 @@ export const action =
                 "Order placement error, please try again!";
             console.error(errorMessage);
             toast.error(errorMessage);
-            if (error.response.status === (401 || 403)) {
+            if (error?.response?.status === (401 || 403)) {
                 return redirect("/login");
             }
             return null;
