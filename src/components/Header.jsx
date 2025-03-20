@@ -8,9 +8,9 @@ const Header = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const user = useSelector((state) => state.userState.user);
+    const queryClient = useQueryClient();
 
     const handleLogout = () => {
-        const queryClient = useQueryClient();
         dispatch(logoutUser());
         queryClient.removeQueries();
         // dispatch(clearCart()); - uncomment this if you want to clear cart on logout
