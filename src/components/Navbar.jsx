@@ -1,32 +1,16 @@
-import { useState, useEffect } from "react";
 import { BsCart3, BsMoonFill, BsSunFill } from "react-icons/bs";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
 import NavLinks from "./NavLinks";
-import { useSelector } from "react-redux";
-
-const themes = {
-    winter: "winter",
-    dracula: "dracula",
-};
-
-const getThemeFromLocalStorage = () => {
-    return localStorage.getItem("theme") || themes.winter;
-};
+import { useSelector, useDispatch } from "react-redux";
+import { toggleTheme } from "../features/user/userSlice";
 
 const Navbar = () => {
-    const [theme, setTheme] = useState(getThemeFromLocalStorage());
-    const handleTheme = () => {
-        const { winter, dracula } = themes;
-        const newTheme = theme === winter ? dracula : winter;
-        document.documentElement.setAttribute("data-theme", newTheme);
-        setTheme(newTheme);
-    };
+    const dispatch = useDispatch();
 
-    useEffect(() => {
-        document.documentElement.setAttribute("data-theme", theme);
-        localStorage.setItem("theme", theme);
-    }, [theme]);
+    const handleTheme = () => {
+        dispatch(toggleTheme());
+    };
 
     const numItemsInCart = useSelector(
         (state) => state.cartState.numItemsInCart
